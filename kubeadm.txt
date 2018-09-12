@@ -16,7 +16,10 @@ kubectl taint nodes --all node-role.kubernetes.io/master-
 
 
 kubectl apply -f metallbconfig.yml
+kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.7.3/manifests/metallb.yaml
+
 kubectl create -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
 kubectl create serviceaccount glubo
 kubectl create clusterrolebinding glubo-cluster-admin --clusterrole=cluster-admin --serviceaccount=default:glubo
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+kubectl apply -f ingress-lb.yml
