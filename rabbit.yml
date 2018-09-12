@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: rabbitmq-as-ng
+  namespace: default
+  labels:
+    app: rabbitmq
+spec:
+  # this setting is t make sure the source IP address is preserved.
+  externalTrafficPolicy: Local
+  type: LoadBalancer
+  selector:
+    app: rabbit
+  ports:
+  - name: rabbit
+    port: 5672
+    targetPort: 5672
+  - name: rabbitadmin
+    port: 15672
+    targetPort: 15672
